@@ -25,12 +25,10 @@ input.addEventListener('keydown', function (event) {
 
 let clearFinished = document.getElementById('remover-finalizados')
 clearFinished.addEventListener('click', function () {
-  for (let i = 0; i < ol.children.length; i++) {
-    if (ol.children[i].classList.contains('completed') || ol.children[i].classList.contains('completed')) {
-      ol.children[i].remove()
+  let finishedTasks = document.querySelectorAll('.completed')
 
-      i--
-    }
+  for (i = finishedTasks.length -1; i >= 0; i-= 1) {
+    finishedTasks[i].remove()
   }
 })
 
