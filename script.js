@@ -28,9 +28,7 @@ input.addEventListener('keydown', function (event) {
 let clearButton = document.getElementById('apaga-tudo')
 
 clearButton.addEventListener('click', function () {
-  for (let i = document.getElementsByTagName('li').children.length; i === document.getElementsByTagName('li').children.length; i--) {
-    document.getElementsByTagName('li')[i].remove();
-  }
+  document.getElementsByTagName('ol')[0].innerHTML = ''
 })
 
 ol.addEventListener('click', function (event) {
