@@ -8,7 +8,6 @@ button.addEventListener('click', function () {
 
   ol.appendChild(liCreator)
   liCreator.innerText = input.value
-  liCreator.classList.add('liStyles')
 
   input.value = ''
 })
@@ -19,14 +18,23 @@ input.addEventListener('keydown', function (event) {
 
     ol.appendChild(liCreator)
     liCreator.innerText = input.value
-    liCreator.classList.add('liStyles')
 
     input.value = ''
   }
 })
 
-let clearButton = document.getElementById('apaga-tudo')
+let clearFinished = document.getElementById('remover-finalizados')
+clearFinished.addEventListener('click', function () {
+  for (let i = 0; i < ol.children.length; i++) {
+    if (ol.children[i].classList.contains('completed') || ol.children[i].classList.contains('completed')) {
+      ol.children[i].remove()
 
+      i--
+    }
+  }
+})
+
+const clearButton = document.getElementById('apaga-tudo')
 clearButton.addEventListener('click', function () {
   document.getElementsByTagName('ol')[0].innerHTML = ''
 })

@@ -2,10 +2,6 @@ li {
   font-size: 20px;
 }
 
-.liStyles {
-  width: auto;
-}
-
 .selectedTask {
   background-color: rgb(128, 128, 128);
   border: 1px solid black;
