@@ -23,14 +23,13 @@ input.addEventListener('keydown', function (event) {
   }
 })
 
-let clearFinished = document.getElementById('remover-finalizados')
-clearFinished.addEventListener('click', function () {
-  let finishedTasks = document.querySelectorAll('.completed')
-
-  for (i = finishedTasks.length -1; i >= 0; i-= 1) {
-    finishedTasks[i].remove()
+let xDone = document.querySelector('#remover-finalizados');
+xDone.addEventListener('click', function () {
+  let doneArr = document.querySelectorAll('.completed');
+  for (let key of doneArr) {
+    key.remove();
   }
-})
+});
 
 const clearButton = document.getElementById('apaga-tudo')
 clearButton.addEventListener('click', function () {
@@ -48,13 +47,6 @@ ol.addEventListener('click', function (event) {
 let undo = 0
 
 ol.addEventListener('dblclick', function (event) {
-  if (undo === 0) {
-    event.target.classList.add('completed')
-
-    undo = 1
-  } else if (undo === 1) {
-    event.target.classList.remove('completed')
-
-    undo = 0
-  }
+  event.target.classList.toggle('completed')
 })
+
