@@ -8,6 +8,7 @@ button.addEventListener('click', function () {
 
   ol.appendChild(liCreator)
   liCreator.innerText = input.value
+  liCreator.classList.add('liStyles')
 
   input.value = ''
 })
@@ -18,7 +19,13 @@ input.addEventListener('keydown', function (event) {
 
     ol.appendChild(liCreator)
     liCreator.innerText = input.value
+    liCreator.classList.add('liStyles')
 
     input.value = ''
   }
 })
+
+ol.addEventListener('click', function (event) {
+  event.target.classList.add('selectedTask')
+})
+
