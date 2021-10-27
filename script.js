@@ -2,7 +2,7 @@ const input = document.getElementById('texto-tarefa');
 const button = document.getElementById('criar-tarefa');
 const ol = document.getElementById('lista-tarefas');
 
-button.addEventListener('click', function () {
+button.addEventListener('click', () => {
   const liCreation = document.createElement('li');
 
   ol.appendChild(liCreation);
@@ -11,7 +11,7 @@ button.addEventListener('click', function () {
   input.value = '';
 });
 
-input.addEventListener('keydown', function (event) {
+input.addEventListener('keydown', (event) => {
   if (event.keyCode === 13) {
     const liCreation = document.createElement('li');
 
@@ -23,7 +23,7 @@ input.addEventListener('keydown', function (event) {
 });
 
 const finishedRemovalButton = document.querySelector('#remover-finalizados');
-finishedRemovalButton.addEventListener('click', function () {
+finishedRemovalButton.addEventListener('click', () => {
   const completedTasks = document.querySelectorAll('.completed');
   for (const task of completedTasks) {
     task.remove();
@@ -31,11 +31,11 @@ finishedRemovalButton.addEventListener('click', function () {
 });
 
 const clearButton = document.getElementById('apaga-tudo');
-clearButton.addEventListener('click', function () {
+clearButton.addEventListener('click', () => {
   document.getElementsByTagName('ol')[0].innerHTML = '';
 });
 
-ol.addEventListener('click', function (event) {
+ol.addEventListener('click', (event) => {
   if (event.target === document.querySelector('#lista-tarefas')) {
 
   } else {
@@ -47,7 +47,7 @@ ol.addEventListener('click', function (event) {
   }
 });
 
-ol.addEventListener('dblclick', function (event) {
+ol.addEventListener('dblclick', (event) => {
   if (event.target === document.querySelector('#lista-tarefas')) {
 
   } else {
