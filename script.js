@@ -1,6 +1,10 @@
+/* eslint-disable no-empty */
+/* eslint-disable no-restricted-syntax */
 const input = document.getElementById('texto-tarefa');
 const button = document.getElementById('criar-tarefa');
 const ol = document.getElementById('lista-tarefas');
+
+// Função para criar tarefa
 
 button.addEventListener('click', () => {
   const liCreation = document.createElement('li');
@@ -21,6 +25,7 @@ input.addEventListener('keydown', (event) => {
     input.value = '';
   }
 });
+// -----------------------------------------------------------------------------
 
 const finishedRemovalButton = document.querySelector('#remover-finalizados');
 finishedRemovalButton.addEventListener('click', () => {
@@ -37,7 +42,6 @@ clearButton.addEventListener('click', () => {
 
 ol.addEventListener('click', (event) => {
   if (event.target === document.querySelector('#lista-tarefas')) {
-
   } else {
     for (let i = 0; i < ol.children.length; i += 1) {
       ol.children[i].classList.remove('selectedTask');
@@ -49,7 +53,6 @@ ol.addEventListener('click', (event) => {
 
 ol.addEventListener('dblclick', (event) => {
   if (event.target === document.querySelector('#lista-tarefas')) {
-
   } else {
     event.target.classList.toggle('completed');
   }
