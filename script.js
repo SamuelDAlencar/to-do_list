@@ -45,6 +45,7 @@ finishedRemovalButton.addEventListener('click', () => {
 const clearButton = document.getElementById('apaga-tudo');
 clearButton.addEventListener('click', () => {
   document.getElementsByTagName('ol')[0].innerHTML = '';
+  localStorage.clear();
 });
 
 // -----------------------------------------------------------------------------
@@ -84,8 +85,9 @@ document.getElementById('salvar-tarefas').addEventListener('click', () => {
   window.localStorage.setItem('valor', JSON.stringify(taskObject));
 });
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 window.onload = () => {
-  let object = JSON.parse(localStorage.getItem('valor'));
+  const object = JSON.parse(localStorage.getItem('valor'));
 
   if (localStorage.length > 0) {
     for (let i = 0; i < object.length; i += 1) {
