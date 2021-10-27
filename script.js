@@ -2,9 +2,8 @@ const input = document.getElementById('texto-tarefa');
 const button = document.getElementById('criar-tarefa');
 const ol = document.getElementById('lista-tarefas');
 
-
-button.addEventListener('click', function () {
-  let liCreator = document.createElement('li')
+button.addEventListener('click', function liCreator() {
+  const liCreator = document.createElement('li')
 
   ol.appendChild(liCreator);
   liCreator.innerText = input.value;
@@ -12,9 +11,9 @@ button.addEventListener('click', function () {
   input.value = '';
 })
 
-input.addEventListener('keydown', function (event) {
+input.addEventListener('keydown', function enterKeyAddition(event) {
   if (event.keyCode === 13) {
-    let liCreator = document.createElement('li');
+    const liCreator = document.createElement('li');
 
     ol.appendChild(liCreator);
     liCreator.innerText = input.value;
@@ -23,20 +22,20 @@ input.addEventListener('keydown', function (event) {
   }
 })
 
-let xDone = document.querySelector('#remover-finalizados');
-xDone.addEventListener('click', function () {
-  let doneArr = document.querySelectorAll('.completed');
-  for (let key of doneArr) {
+const finishedRemovalButton = document.querySelector('#remover-finalizados');
+finishedRemovalButton.addEventListener('click', function finishedTasksRemover() {
+  const completedTasks = document.querySelectorAll('.completed');
+  for (let key of completedTasks) {
     key.remove();
   }
 });
 
 const clearButton = document.getElementById('apaga-tudo')
-clearButton.addEventListener('click', function () {
+clearButton.addEventListener('click', function clearButton() {
   document.getElementsByTagName('ol')[0].innerHTML = '';
-})
+});
 
-ol.addEventListener('click', function (event) {
+ol.addEventListener('click', function taskSelector(event) {
   for (let i = 0; i < ol.children.length; i++) {
     ol.children[i].classList.remove('selectedTask');
   }
@@ -44,9 +43,6 @@ ol.addEventListener('click', function (event) {
   event.target.classList.add('selectedTask');
 })
 
-let undo = 0;
-
-ol.addEventListener('dblclick', function (event) {
+ol.addEventListener('dblclick', function finishedToggler(event) {
   event.target.classList.toggle('completed');
-})
-
+});
