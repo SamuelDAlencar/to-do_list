@@ -69,3 +69,36 @@ ol.addEventListener('dblclick', (event) => {
     event.target.classList.toggle('completed');
   }
 });
+
+// Bonus Requisition -----------------------------------------------------------
+
+document.getElementById('salvar-tarefas').addEventListener('click', () => {
+  let taskObject = [];
+  for (let i = 0; i < ol.children.length; i += 1) {
+    taskObject.push({
+      text: ol.children[i].innerText,
+      class: ol.children[i].classList.contains('completed'),
+    });
+  }
+
+  window.localStorage.setItem('valor', JSON.stringify(taskObject));
+});
+
+window.onload = () => {
+  let object = JSON.parse(localStorage.getItem('valor'));
+
+  if (localStorage.length > 0) {
+    for (let i = 0; i < object.length; i += 1) {
+      const value = object[i];
+      const liCreation = document.createElement('li');
+      ol.appendChild(liCreation);
+
+      liCreation.innerText = value.text;
+
+      if (object[i].class) {
+        liCreation.className = 'completed';
+      }
+    }
+  }
+  console.log(localStorage.length);
+};
