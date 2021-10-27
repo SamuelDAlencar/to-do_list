@@ -73,6 +73,8 @@ ol.addEventListener('dblclick', (event) => {
 
 // Bonus Requisition -----------------------------------------------------------
 
+// Função que aloca as tarefas no Local Storage
+
 document.getElementById('salvar-tarefas').addEventListener('click', () => {
   const taskObject = [];
   for (let i = 0; i < ol.children.length; i += 1) {
@@ -102,5 +104,36 @@ window.onload = () => {
       }
     }
   }
-  console.log(localStorage.length);
 };
+
+// -----------------------------------------------------------------------------
+
+// Função que remove a tarefa selecionada
+
+document.getElementById('remover-selecionado').addEventListener('click', () => {
+  for (let i = 0; i < ol.children.length; i += 1) {
+    if (ol.children[i].classList.contains('selectedTask')) {
+      ol.children[i].remove();
+    }
+  }
+});
+
+// -----------------------------------------------------------------------------
+
+// Função que alterna entre as tarefas
+
+document.getElementById('mover-baixo').addEventListener('click', () => {
+  for (let i = 0; i < ol.children.length; i += 1) {
+    if (ol.children[i].classList.contains('selectedTask')) {
+      ol.children[i] = ol.children[i].nextSibling;
+    }
+  }
+});
+
+document.getElementById('mover-cima').addEventListener('click', () => {
+  for (let i = 0; i < ol.children.length; i += 1) {
+    if (ol.children[i].classList.contains('selectedTask')) {
+      ol.children[i] = ol.children[i].previousSibling;
+    }
+  }
+});

@@ -9,7 +9,7 @@ body {
 }
 
 section {
-  width: 590px;
+  width: 500px;
   text-align: center;
   margin: 30px auto;
 }
@@ -39,6 +39,7 @@ li:hover {
 button {
   background: none;
   color: white;
+  margin: 3px;
 }
 
 button:hover {
