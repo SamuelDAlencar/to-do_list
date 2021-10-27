@@ -73,7 +73,7 @@ ol.addEventListener('dblclick', (event) => {
 // Bonus Requisition -----------------------------------------------------------
 
 document.getElementById('salvar-tarefas').addEventListener('click', () => {
-  let taskObject = [];
+  const taskObject = [];
   for (let i = 0; i < ol.children.length; i += 1) {
     taskObject.push({
       text: ol.children[i].innerText,
