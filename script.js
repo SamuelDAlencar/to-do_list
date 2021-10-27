@@ -3,30 +3,30 @@ const button = document.getElementById('criar-tarefa');
 const ol = document.getElementById('lista-tarefas');
 
 button.addEventListener('click', function liCreator() {
-  const liCreator = document.createElement('li')
+  const liCreation = document.createElement('li');
 
-  ol.appendChild(liCreator);
-  liCreator.innerText = input.value;
+  ol.appendChild(liCreation);
+  liCreation.innerText = input.value;
 
   input.value = '';
-})
+});
 
 input.addEventListener('keydown', function enterKeyAddition(event) {
   if (event.keyCode === 13) {
-    const liCreator = document.createElement('li');
+    const liCreation = document.createElement('li');
 
-    ol.appendChild(liCreator);
-    liCreator.innerText = input.value;
+    ol.appendChild(liCreation);
+    liCreation.innerText = input.value;
 
     input.value = '';
   }
-})
+});
 
 const finishedRemovalButton = document.querySelector('#remover-finalizados');
 finishedRemovalButton.addEventListener('click', function finishedTasksRemover() {
   const completedTasks = document.querySelectorAll('.completed');
-  for (let key of completedTasks) {
-    key.remove();
+  for (const task of completedTasks) {
+    task.remove();
   }
 });
 
@@ -36,12 +36,12 @@ clearButton.addEventListener('click', function clearButton() {
 });
 
 ol.addEventListener('click', function taskSelector(event) {
-  for (let i = 0; i < ol.children.length; i++) {
+  for (let i = 0; i < ol.children.length; i+= 1) {
     ol.children[i].classList.remove('selectedTask');
   }
 
   event.target.classList.add('selectedTask');
-})
+});
 
 ol.addEventListener('dblclick', function finishedToggler(event) {
   event.target.classList.toggle('completed');
