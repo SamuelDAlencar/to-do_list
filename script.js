@@ -30,7 +30,7 @@ finishedRemovalButton.addEventListener('click', function () {
   }
 });
 
-const clearButton = document.getElementById('apaga-tudo')
+const clearButton = document.getElementById('apaga-tudo');
 clearButton.addEventListener('click', function () {
   document.getElementsByTagName('ol')[0].innerHTML = '';
 });
