@@ -125,7 +125,12 @@ document.getElementById('remover-selecionado').addEventListener('click', () => {
 document.getElementById('mover-baixo').addEventListener('click', () => {
   for (let i = 0; i < ol.children.length; i += 1) {
     if (ol.children[i].classList.contains('selectedTask')) {
-      ol.children[i] = ol.children[i].nextSibling;
+      const currentTask = ol.children[i + 1].innerHTML;
+
+      ol.children[i].className = '';
+      ol.children[i += 1].className = 'selectedTask';
+      ol.children[i].innerHTML = ol.children[i - 1].innerHTML;
+      ol.children[i - 1].innerHTML = currentTask;
     }
   }
 });
@@ -133,7 +138,9 @@ document.getElementById('mover-baixo').addEventListener('click', () => {
 document.getElementById('mover-cima').addEventListener('click', () => {
   for (let i = 0; i < ol.children.length; i += 1) {
     if (ol.children[i].classList.contains('selectedTask')) {
-      ol.children[i] = ol.children[i].previousSibling;
+      ol.insertBefore(document.createElement('li'), ol.children[i + 1]);
+      ol.children[i + 1].innerHTML = ol.children[i - 1].innerHTML;
+      ol.children[i - 1].remove();
     }
   }
 });
