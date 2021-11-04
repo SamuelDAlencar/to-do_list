@@ -124,20 +124,26 @@ document.getElementById('remover-selecionado').addEventListener('click', () => {
 
 document.getElementById('mover-baixo').addEventListener('click', () => {
   for (let i = 0; i < ol.children.length; i += 1) {
-    if (ol.children[i].classList.contains('selectedTask')) {
-      const currentTask = ol.children[i + 1].innerHTML;
-
-      ol.children[i].className = '';
-      ol.children[i += 1].className = 'selectedTask';
-      ol.children[i].innerHTML = ol.children[i - 1].innerHTML;
-      ol.children[i - 1].innerHTML = currentTask;
+    if (ol.children[i].classList.contains('selectedTask') && ol.children[i].nextElementSibling != null) {
+      const nextHTML = ol.children[i + 1].innerHTML;
+      ol.children[i].nextElementSibling.innerHTML = ol.children[i].innerHTML;
+      ol.children[i].innerHTML = nextHTML;
+      if (ol.children[i].classList.contains('completed')) {
+        ol.children[i].classList.remove('completed');
+        ol.children[i].classList.remove('selectedTask');
+        ol.children[i += 1].className = ('completed selectedTask');
+      } else {
+        ol.children[i].classList.remove('selectedTask');
+        ol.children[i += 1].className = ('selectedTask');
+      }
     }
   }
+  console.log(ol.children[0].previousElementSibling);
 });
 
 document.getElementById('mover-cima').addEventListener('click', () => {
   for (let i = 0; i < ol.children.length; i += 1) {
-    if (ol.children[i].classList.contains('selectedTask')) {
+    if (ol.children[i].classList.contains('selectedTask') && ol.children[i].previousElementSibling != null) {
       ol.insertBefore(document.createElement('li'), ol.children[i + 1]);
       ol.children[i + 1].innerHTML = ol.children[i - 1].innerHTML;
       ol.children[i - 1].remove();
